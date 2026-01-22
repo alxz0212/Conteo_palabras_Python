@@ -2,7 +2,7 @@
 
 Este repositorio contiene herramientas prácticas para introducirse en el Procesamiento de Lenguaje Natural (NLP) usando Python. El proyecto evoluciona desde un script básico de análisis de texto hasta un Dashboard web interactivo y seguro.
 
-![Demostración interactiva del Dashboard](file:///C:/Users/alexi/.gemini/antigravity/brain/ede68b7d-99c6-4482-a2fa-04542b112b2f/dashboard_demo_full_1769123559524.webp)
+![Demostración interactiva del Dashboard](imagenes/dashboard_demo.webp)
 
 ## 📁 Contenido del Proyecto
 
