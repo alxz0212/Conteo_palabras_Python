@@ -11,32 +11,61 @@ Un script de Python puro que demuestra los fundamentos del análisis de texto:
 - **Normalización**: Conversión a minúsculas.
 - **Tokenización**: Uso de Expresiones Regulares (`re`) para separar palabras.
 - **Conteo**: Uso de `collections.Counter` para calcular frecuencias.
-- **Visualización**: Generación de un gráfico de barras estático con `matplotlib`.
+- **Visualización**: Gráfico de barras estático.
 
-### 2. `01_Dashboard_conteo.py` (Aplicación Web)
-Una aplicación completa construida con **Streamlit** que lleva el análisis al siguiente nivel, ofreciendo una interfaz gráfica amigable.
+### 2. `02_limpieza_texto.py` (Limpieza y Análisis Avanzado)
+Evolución técnica enfocada en la calidad del dato:
+- **Filtro de Stopwords**: Eliminación de palabras vacías (el, la, de).
+- **Filtro de Longitud**: Ignora palabras irrelevantes por su tamaño.
+- **Analítica Visual**: Genera una **Nube de Palabras** y un **Perfil Emocional** (Sentimiento).
+- **Doble Ventana**: Comparativa directa "Antes vs Después".
+
+### 3. `01_Dashboard_conteo.py` (Aplicación Web)
+Una aplicación interactiva construida con **Streamlit** que integra todas las herramientas anteriores.
 
 **Características Principales:**
-- **🔐 Acceso Seguro**: Sistema de login (Usuario: `admin`, Contraseña: `1234`).
-- **📝 Entrada Flexible**: Campo de texto para analizar cualquier corpus (novelas, discursos, etc.) con contador de caracteres.
-- **📊 Visualización Interactiva**:
-    - **Gráfico de Barras**: Frecuencia absoluta de palabras.
-    - **Gráfico de Donut (Pie Chart)**: Distribución proporcional interactiva con **Plotly**.
+- **🔐 Acceso Seguro**: Sistema de login protegido.
+- **🎮 Navegación Dual**: Pestañas de "Conteo Puro" y "Limpieza Profunda".
+- **☁️ Visualización**: Nube de palabras y gráficas comparativas en tiempo real.
+- **📚 Diccionario de Ruidos**: Consulta interactiva de Stopwords.
+
+---
+
+## 📖 Guías de Estudio Detalladas
+Para entender paso a paso cómo se construyó cada fase, puedes consultar estas guías:
+*   [Guía Ejercicio 1 (Fundamentos)](Explicacion_01.md): Explicación del conteo básico.
+*   [Guía Ejercicio 2 (Limpieza y Sentimiento)](Explicacion_02.md): Cómo filtrar el ruido y detectar emociones.
+*   [Guía del Dashboard](Explicacion_Dashboard.md): Estructura del panel web y seguridad.
 
 ## 🚀 Cómo Ejecutar
 
-### Requisitos
-Asegúrate de tener instaladas las librerías necesarias:
+### 1. Instalación de Requisitos
+Asegúrate de instalar las librerías necesarias ejecutando:
 ```bash
-pip install streamlit plotly matplotlib pandas
+pip install streamlit plotly matplotlib pandas wordcloud
 ```
 
-### Ejecutar el Dashboard
-Para lanzar la aplicación web:
+### 2. Ejecutar los Scripts de Análisis (Consola)
+Para los ejercicios de lógica y fundamentos por consola:
+
+**Ejercicio 1 (Básico):**
+```bash
+python 01_conteo_palabras.py
+```
+
+**Ejercicio 2 (Avanzado - Dos ventanas):**
+```bash
+python 02_limpieza_texto.py
+```
+
+### 3. Ejecutar el Dashboard (Web)
+Para lanzar la aplicación web interactiva:
 ```bash
 streamlit run 01_Dashboard_conteo.py
 ```
-Esto abrirá automáticamente el dashboard en tu navegador.
+> [!TIP]
+> Si usas un entorno virtual y tienes problemas con los módulos, ejecuta:
+> `python -m streamlit run 01_Dashboard_conteo.py`
 
 ---
-*Proyecto desarrollado para aprender fundamentos de NLP y visualización de datos con Python.*
+*Proyecto de aprendizaje de NLP y Visualización con Python.*

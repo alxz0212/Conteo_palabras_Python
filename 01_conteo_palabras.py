@@ -63,6 +63,18 @@ print("Top 10 palabras más frecuentes (antes de la limpieza):")
 for word, count in top_10_words:
     print(f"- '{word}': {count} veces")
 
+# 5. Total de palabras
+# Calculamos la longitud de la lista 'words' para saber cuántas palabras hay en total.
+print(f"\nPaso 5: Calculando el total de palabras...")
+total_words = len(words)
+print(f"Total de palabras en el corpus: {total_words}")
+
+# 6. Palabras únicas
+# El objeto Counter (word_counts) ya contiene las palabras únicas como llaves.
+print("\nPaso 6: Calculando el número de palabras únicas...")
+unique_words = len(word_counts)
+print(f"Número de palabras únicas: {unique_words}")
+
 # --- VISUALIZACIÓN ---
 # Un análisis no está completo si no podemos comunicarlo visualmente.
 

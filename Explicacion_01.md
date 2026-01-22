@@ -53,6 +53,18 @@ word_counts = Counter(words)
 ```
 `Counter` recorre la lista de palabras y crea un diccionario donde las claves son las palabras y los valores son cuántas veces aparecen.
 
+### Paso 5: Total de palabras
+```python
+total_words = len(words)
+```
+Calculamos la longitud de la lista de tokens para conocer el tamaño total del corpus. Esto nos da una idea de la escala de los datos con los que estamos trabajando.
+
+### Paso 6: Palabras únicas
+```python
+unique_words = len(word_counts)
+```
+Contamos cuántas entradas hay en nuestro `Counter`. Esto representa el vocabulario único o la "diversidad léxica" de nuestro texto.
+
 ## 4. Visualización (Líneas 66-86)
 Se genera un gráfico de barras con las 10 palabras más comunes.
 
