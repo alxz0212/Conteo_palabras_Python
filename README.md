@@ -68,4 +68,22 @@ streamlit run 01_Dashboard_conteo.py
 > `python -m streamlit run 01_Dashboard_conteo.py`
 
 ---
-*Proyecto de aprendizaje de NLP y Visualización con Python.*
+
+## 📜 Créditos y Referencias
+Este proyecto ha sido desarrollado siguiendo la metodología y el código base de Juan Marcelo Gutierrez Miranda (@TodoEconometria).
+
+**Autor original:** Juan Marcelo Gutierrez Miranda  
+**Institución:** @TodoEconometria  
+**Hash de Certificación:** `4e8d9b1a5f6e7c3d2b1a0f9e8d7c6b5a4f3e2d1c0b9a8f7e6d5c4b3a2f1e0d9c`
+
+### Referencias Bibliográficas:
+1. Bird, S., Klein, E., & Loper, E. (2009). *Natural Language Processing with Python*. O'Reilly Media.
+2. Streamlit Documentation. *Build powerful data apps in minutes*. [docs.streamlit.io](https://docs.streamlit.io)
+3. Matplotlib Development Team. *Matplotlib: A 2D graphics environment*. [matplotlib.org](https://matplotlib.org)
+
+---
+
+## 👨‍💻 Realizado por
+**Daniel Alexis Mendoza Corne**  
+*Ingeniero Informático y de sistemas*  
+[GitHub Profile](https://github.com/alxz0212)
