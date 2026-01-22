@@ -6,7 +6,9 @@ Este documento explica el segundo ejercicio, donde el objetivo principal es apre
 
 *   **`re` (Expresiones Regulares)**: Se usa para la **Tokenización**. Permite extraer solo las palabras, eliminando signos de puntuación de forma inteligente.
 *   **`collections.Counter`**: Se encarga del **conteo matemático**. Cuenta automáticamente cuántas veces aparece cada palabra una vez que el texto está limpio.
-*   **`matplotlib.pyplot`**: Se utiliza para la **visualización comparativa**. En este ejercicio, creamos dos gráficos en una sola ventana para ver el "antes" y el "después".
+*   **`matplotlib.pyplot`**: Se utiliza para la **visualización comparativa**. En este ejercicio, creamos dos figuras independientes para un análisis profundo.
+*   **`wordcloud`**: Genera la **Nube de Palabras**, una forma visual y artística de identificar temas dominantes.
+*   **`rich`**: La librería estrella de este ejercicio. Se encarga de convertir la aburrida terminal de texto plano en una **interfaz profesional** con colores, tablas, reglas y paneles.
 
 ---
 
@@ -76,6 +78,24 @@ Para que no pierdas ningún detalle, el script ahora genera **dos ventanas indep
     *   **Lado Rojo (Antes)**: Muestra cómo el "ruido" (artículos como 'el', preposiciones como 'de') oculta el mensaje real del autor.
     *   **Lado Verde (Después)**: Revela las palabras con carga semántica real (adjetivos, sustantivos, verbos) tras el filtrado.
     *   **Precisión**: Las etiquetas numéricas sobre las barras eliminan cualquier ambigüedad, permitiendo ver el conteo exacto de cada término.
+
+## 8. Interfaz de Terminal Enriquecida con `Rich`
+
+Para que el proyecto tenga una estética profesional fuera de los gráficos, hemos integrado la librería `rich`. Esto transforma la experiencia en la consola:
+
+*   **Reglas de Sección (`console.rule`)**: Líneas divisorias de colores que separan claramente los pasos del análisis (Paso 1: Análisis, Paso 2: NLP, etc.).
+*   **Paneles Informativos (`Panel`)**: Los resultados de las métricas y la conclusión final aparecen dentro de recuadros elegantes con bordes de colores.
+*   **Tablas de Datos (`Table`)**: El "Top 10" de palabras ya no es una lista cruda; ahora es una tabla real con encabezados magenta y columnas alineadas para una lectura perfecta.
+
+---
+
+## 9. Sistema de Menú Interactivo
+
+El script ya no se cierra tras mostrar los gráficos, ni te obliga a ver todas las imágenes a la vez. Hemos implementado un **bucle interactivo**:
+
+1.  **Selector de Figuras**: Al ejecutar el script, la terminal te preguntará qué deseas visualizar (Opción 1 para el Dashboard 360°, Opción 2 para la Comparativa).
+2.  **Regeneración "Fresh"**: Debido a que Matplotlib libera memoria al cerrar una ventana, el script regenera la imagen completa cada vez que la seleccionas en el menú. Esto evita el problema de las "ventanas en blanco".
+3.  **Salida Controlada**: La opción `3` permite cerrar el programa de forma limpia con un mensaje de despedida.
 
 ---
 
