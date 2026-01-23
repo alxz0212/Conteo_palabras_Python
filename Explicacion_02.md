@@ -12,12 +12,30 @@ Este documento explica el segundo ejercicio, donde el objetivo principal es apre
 
 ---
 
-## 2. El Concepto de Stopwords (Líneas 29-32)
+## 2. El Concepto de Stopwords (Líneas 29-40)
 
-Las **Stopwords** son palabras vacías como "el", "la", "de", "que". 
-*   Aparecen mucho en cualquier texto.
-*   No aportan información sobre el tema o sentimiento.
-*   En este ejercicio, definimos un conjunto (`set`) llamado `stopwords_es` con las palabras más comunes del español para filtrarlas.
+En este paso introducimos la *gran diferencia* respecto al primer ejercicio: **La Limpieza Selectiva**.
+
+Las **Stopwords** son palabras vacías como "el", "la", "de", "que". Aparecen mucho pero no aportan significado.
+
+### 💡 Lo Nuevo: Definición del Filtro
+A diferencia del script anterior donde contábamos *todo*, aquí hemos añadido manualmente una lista de palabras a ignorar.
+
+```python
+# [NUEVO] Definimos un conjunto (set) con las palabras que queremos ELIMINAR
+stopwords_es = set([
+    'de', 'la', 'que', 'el', 'en', 'y', 'a', 'los', 'del', 'las', 'un', 'por', 
+    'con', 'no', 'una', 'su', 'para', 'es', 'al', 'lo', 'como', 'más', 'pero', 
+    'sus', 'le', 'ha', 'me', 'sin', 'sobre', 'este', 'ya', 'entre', 'cuando', 
+    'todo', 'esta', 'ser', 'son', 'dos', 'también', 'fue', 'había', 'era', 'muy', 
+    'hasta', 'desde', 'mucho', 'hacia', 'mi', 'se', 'ni', 'ese', 'yo', 'qué', 
+    'e', 'o', 'u', 'algunos', 'aspectos'
+])
+```
+
+**Explicación para tu equipo:**
+1.  **¿Por qué un `set` y no una lista?**: En Python, buscar en un `set` (conjunto) es instantáneo, mientras que buscar en una `list` se vuelve más lento cuantas más palabras tengas. Es una optimización de velocidad.
+2.  **Personalización**: Esta lista es totalmente editable. Si analizas textos médicos, podrías añadir palabras como "paciente" o "doctor" si consideras que son ruido para tu objetivo específico.
 
 ---
 
@@ -27,13 +45,13 @@ En lugar de repetir código, este script usa una **función** (línea 37) que ha
 1.  **Normalización**: Pasa todo a minúsculas (`.lower()`).
 2.  **Tokenización**: Divide el texto en palabras.
 3.  **Filtrado (Limpieza)**: Si le pasamos la lista de stopwords, usa una "lista por comprensión" para quedarse solo con las palabras que NO están en esa lista.
-4.  **NUEVA MEJORA: Filtrado por Longitud**: Ahora el script ignora palabras muy cortas (ej: menos de 3 letras). Esto es clave porque palabras como "ni", "a", "u" o "lo" suelen ser ruido estadístico que no aporta significado.
+4.  🔴 <span style="color:red">**NUEVA MEJORA: Filtrado por Longitud**</span>: Ahora el script ignora palabras muy cortas (ej: menos de 3 letras). Esto es clave porque palabras como "ni", "a", "u" o "lo" suelen ser ruido estadístico que no aporta significado.
     ```python
     # Solo guardamos palabras que tengan al menos 'min_len' caracteres
     if min_len > 1:
         words = [word for word in words if len(word) >= min_len]
     ```
-5.  **Retorno Doble**: La función ahora devuelve tanto la lista de palabras filtradas como el objeto `Counter`, permitiendo realizar cálculos estadísticos posteriores.
+5.  **Retorno Doble**: La función ahora devuelve tanto la lista de palabras filtradas como el objeto `Counter`.
 
 ---
 
@@ -42,7 +60,18 @@ En lugar de repetir código, este script usa una **función** (línea 37) que ha
 El script realiza dos análisis sobre el mismo texto:
 *   **Paso 1**: Cuenta todas las palabras originales para tener una base de comparación.
 *   **Paso 2**: Realiza el conteo tras aplicar los dos filtros (Stopwords + Longitud >= 3).
-*   **NUEVA MEJORA: Métricas de Eficiencia (Porcentaje de Ruido)**: El script calcula matemáticamente cuánto texto se eliminó.
+*   🔴 <span style="color:red">**NUEVA MEJORA: Métricas de Eficiencia (Porcentaje de Ruido)**</span>: El script calcula matemáticamente cuánto texto se eliminó.
+
+    ```python
+    # Calculamos cuántas palabras hemos eliminado
+    total_sin = len(words_sin)
+    total_con = len(words_con)
+    ruido_eliminado = total_sin - total_con
+    
+    # Regla de tres simple para sacar el porcentaje
+    porcentaje_ruido = (ruido_eliminado / total_sin) * 100
+    ```
+
     *   **Métrica 1**: Porcentaje de ruido (ej: "46.9% del texto eliminado").
     *   **Métrica 2**: Cantidad exacta de palabras descartadas.
     Esto permite cuantificar la "limpieza" de nuestros datos.
@@ -83,9 +112,26 @@ Para que no pierdas ningún detalle, el script ahora genera **dos ventanas indep
 
 Para que el proyecto tenga una estética profesional fuera de los gráficos, hemos integrado la librería `rich`. Esto transforma la experiencia en la consola:
 
-*   **Reglas de Sección (`console.rule`)**: Líneas divisorias de colores que separan claramente los pasos del análisis (Paso 1: Análisis, Paso 2: NLP, etc.).
-*   **Paneles Informativos (`Panel`)**: Los resultados de las métricas y la conclusión final aparecen dentro de recuadros elegantes con bordes de colores.
-*   **Tablas de Datos (`Table`)**: El "Top 10" de palabras ya no es una lista cruda; ahora es una tabla real con encabezados magenta y columnas alineadas para una lectura perfecta.
+### 🔴 <span style="color:red">**NUEVA MEJORA: Diseño de Consola**</span>
+
+*   **Reglas de Sección (`console.rule`)**: Líneas divisorias de colores que separan claramente los pasos del análisis.
+    ```python
+    console.rule("[bold blue]PASO 1: Análisis Inicial (Sin Limpiar)")
+    ```
+
+*   **Paneles Informativos (`Panel`)**: Los resultados de las métricas aparecen dentro de recuadros elegantes.
+    ```python
+    console.print(Panel(metricas_text, title="[bold green]Métricas de Eficiencia[/]", expand=False))
+    ```
+
+*   **Tablas de Datos (`Table`)**: El "Top 10" ahora es una tabla real con encabezados magenta y columnas alineadas.
+    ```python
+    tabla = Table(title="[bold yellow]Top 10 Palabras con Significado[/]", show_header=True, header_style="bold magenta")
+    tabla.add_column("Palabra", style="cyan", justify="left")
+    tabla.add_column("Frecuencia", style="green", justify="right")
+    # ... se añaden las filas ...
+    console.print(tabla)
+    ```
 
 ---
 
