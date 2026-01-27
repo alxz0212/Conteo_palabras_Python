@@ -42,7 +42,7 @@ def df_to_table(pandas_df, title="Data Table"):
 console.print(Panel.fit("1. CARGANDO DATOS", style="bold white on blue"))
 
 with console.status("[bold green]Cargando dataset Titanic...", spinner="dots"):
-    df = sns.load_dataset("titanic")
+    df = sns.load_dataset("titanic") #dataset
 
 # Ver las primeras filas
 console.print("\n[bold]Primeras 5 filas del dataset:[/bold]")
